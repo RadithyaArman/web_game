@@ -1,0 +1,1 @@
+<h1><?= $data['game']['deskripsi'] ?></h1>
