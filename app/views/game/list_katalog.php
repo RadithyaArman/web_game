@@ -5,10 +5,10 @@
             <a href=" <?= BASEURL; ?>/detail/<?= $g['id'] ?> ">
                 <div class="katalog-game-item">
                     <div class="katalog-game-card">
-                        <img src="<?= $g['gambar'] ?>">
+                        <img src="<?= $g['cover'] ?>">
                     </div>
                     <div class="katalog-game-info">
-                        <span><?= $g['judul'] ?></span>
+                        <span><?= $g['title'] ?></span>
                     </div>
                 </div>
             </a>

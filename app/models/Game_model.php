@@ -25,7 +25,7 @@ class Game_model {
         if($keyword === '') {
             $this->db->query("SELECT * FROM {$this->table}");
         } else {
-            $this->db->query('SELECT * FROM ' . $this->table . ' WHERE judul LIKE :keyword');
+            $this->db->query('SELECT * FROM ' . $this->table . ' WHERE title LIKE :keyword');
             $this->db->bind(':keyword', "%$keyword%");
         }
         return $this->db->resultSet();
@@ -34,7 +34,7 @@ class Game_model {
     // Sort game ASC / DESC berdasarkan nama
     public function sortGame($order = 'asc') {
         $order = strtoupper($order) === 'DESC' ? 'DESC' : 'ASC';
-        $this->db->query("SELECT * FROM  {$this->table} ORDER BY judul $order");
+        $this->db->query("SELECT * FROM  {$this->table} ORDER BY title $order");
         return $this->db->resultSet();
     }
 }

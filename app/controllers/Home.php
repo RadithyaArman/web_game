@@ -3,9 +3,10 @@ class Home extends Controller {
     public function index() {
         $data['judul'] = 'Home';
         $games = $this->model('Game_model')->getAllGame();
+        $data['genres'] = $this->model('Genre_model')->getAllGenre();
         $image = $this->model('Image_model');
 
-        foreach( $games as $g ) {
+        foreach( $games as &$g ) {
             $cover = $image->getCoverByGameId($g['id']);
             $g['cover'] = $cover ? $cover['file_path'] : 'default.jpg';
         }

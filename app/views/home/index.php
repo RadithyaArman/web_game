@@ -1,28 +1,184 @@
 <div class="atas">
-    <h2>Rekomendasi</h2>
-</div>
-<div class="grid">
-    <div class="card satu">
-        <h3>Kategori</h3>
-        <p><a href="">PC</a></p>
-        <p><a href="">Action</a></p>
-        <p><a href="">Horor</a></p>
+    <div class="kiri">
+        <h2 class="mb-1">Beranda</h2>
     </div>
-    <div class="card dua">
+    <div class="kanan">
+        <a href="<?= BASEURL; ?>/katalog">>Temukan semua game</a>
+    </div>
+    
+</div>
+<div class="home-grid">
+    <div class="home-left">
+        <h3 class="home-title-card">Tag</h3>
+        <ul>
+            <?php
+            foreach( $data['genres'] as $g ) : ?>
+            <li class="home-tag">
+                <a href=""><?= $g['name']; ?></a>
+            </li>
+            <?php endforeach; ?>
+        </ul>
+    </div>
+    <div class="home-middle">
+        <h3 class="home-title-card">Rekomendasi</h3>
         <ul>
             <?php
                 $count = 0;
                 foreach( $data['games'] as $g ) :
-                if( $count >= 9 ) break;
+                if( $count >= 12 ) break;
                 ?>
                 <li>
                     <a href=" <?= BASEURL; ?>/detail/<?= $g['id'] ?> ">
                         <div class="game-item">
                             <div class="game-card">
-                                <img src="<?= $g['gambar'] ?>">
+                                <img src="<?= $g['cover'] ?>">
                             </div>
                             <div class="game-info">
-                                <span><?= $g['judul'] ?></span>
+                                <span><?= $g['title'] ?></span>
+                            </div>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href=" <?= BASEURL; ?>/detail/<?= $g['id'] ?> ">
+                        <div class="game-item">
+                            <div class="game-card">
+                                <img src="<?= $g['cover'] ?>">
+                            </div>
+                            <div class="game-info">
+                                <span><?= $g['title'] ?></span>
+                            </div>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href=" <?= BASEURL; ?>/detail/<?= $g['id'] ?> ">
+                        <div class="game-item">
+                            <div class="game-card">
+                                <img src="<?= $g['cover'] ?>">
+                            </div>
+                            <div class="game-info">
+                                <span><?= $g['title'] ?></span>
+                            </div>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href=" <?= BASEURL; ?>/detail/<?= $g['id'] ?> ">
+                        <div class="game-item">
+                            <div class="game-card">
+                                <img src="<?= $g['cover'] ?>">
+                            </div>
+                            <div class="game-info">
+                                <span><?= $g['title'] ?></span>
+                            </div>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href=" <?= BASEURL; ?>/detail/<?= $g['id'] ?> ">
+                        <div class="game-item">
+                            <div class="game-card">
+                                <img src="<?= $g['cover'] ?>">
+                            </div>
+                            <div class="game-info">
+                                <span><?= $g['title'] ?></span>
+                            </div>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href=" <?= BASEURL; ?>/detail/<?= $g['id'] ?> ">
+                        <div class="game-item">
+                            <div class="game-card">
+                                <img src="<?= $g['cover'] ?>">
+                            </div>
+                            <div class="game-info">
+                                <span><?= $g['title'] ?></span>
+                            </div>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href=" <?= BASEURL; ?>/detail/<?= $g['id'] ?> ">
+                        <div class="game-item">
+                            <div class="game-card">
+                                <img src="<?= $g['cover'] ?>">
+                            </div>
+                            <div class="game-info">
+                                <span><?= $g['title'] ?></span>
+                            </div>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href=" <?= BASEURL; ?>/detail/<?= $g['id'] ?> ">
+                        <div class="game-item">
+                            <div class="game-card">
+                                <img src="<?= $g['cover'] ?>">
+                            </div>
+                            <div class="game-info">
+                                <span><?= $g['title'] ?></span>
+                            </div>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href=" <?= BASEURL; ?>/detail/<?= $g['id'] ?> ">
+                        <div class="game-item">
+                            <div class="game-card">
+                                <img src="<?= $g['cover'] ?>">
+                            </div>
+                            <div class="game-info">
+                                <span><?= $g['title'] ?></span>
+                            </div>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href=" <?= BASEURL; ?>/detail/<?= $g['id'] ?> ">
+                        <div class="game-item">
+                            <div class="game-card">
+                                <img src="<?= $g['cover'] ?>">
+                            </div>
+                            <div class="game-info">
+                                <span><?= $g['title'] ?></span>
+                            </div>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href=" <?= BASEURL; ?>/detail/<?= $g['id'] ?> ">
+                        <div class="game-item">
+                            <div class="game-card">
+                                <img src="<?= $g['cover'] ?>">
+                            </div>
+                            <div class="game-info">
+                                <span><?= $g['title'] ?></span>
+                            </div>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href=" <?= BASEURL; ?>/detail/<?= $g['id'] ?> ">
+                        <div class="game-item">
+                            <div class="game-card">
+                                <img src="<?= $g['cover'] ?>">
+                            </div>
+                            <div class="game-info">
+                                <span><?= $g['title'] ?></span>
+                            </div>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href=" <?= BASEURL; ?>/detail/<?= $g['id'] ?> ">
+                        <div class="game-item">
+                            <div class="game-card">
+                                <img src="<?= $g['cover'] ?>">
+                            </div>
+                            <div class="game-info">
+                                <span><?= $g['title'] ?></span>
                             </div>
                         </div>
                     </a>
@@ -31,7 +187,7 @@
              endforeach; ?>
         </ul>
     </div>
-    <div class="card tiga">
-        <h3>Top game</h3>
+    <div class="home-right">
+        <h3 class="home-title-card">Top game</h3>
     </div>
 </div>

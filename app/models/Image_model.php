@@ -1,21 +1,21 @@
 <?php
 class Image_model {
-    private $table = 'image';
+    private $table = 'images';
     private $db;
 
     public function __construct() {
         $this->db = new Database;
     }
 
-    public function getCoverByGameId($gameId) {
-        $this->db->query('SELECT * FROM ' . $this->table . ' WHERE game_id=:game_id AND cover_game = 1 LIMIT 1');
-        $this->db->bind('game_id', $gameId);
+    public function getCoverByGameId($idgame) {
+        $this->db->query('SELECT * FROM ' . $this->table . ' WHERE id_game=:id_game AND cover_game = 1 LIMIT 1');
+        $this->db->bind('id_game', $idgame);
         return $this->db->single();
     }
 
-    public function getAllImageGameById($gameid) {
-        $this->db->query('SELECT * FROM ' . $this->table . ' WHERE game_id=:game_id');
-        $this->db->bind('game_id', $gameid);
+    public function getImageGameById($idgame) {
+        $this->db->query('SELECT * FROM ' . $this->table . ' WHERE id_game=:id_game AND cover_game = 0');
+        $this->db->bind('id_game', $idgame);
         return $this->db->resultSet();
     }
 }
