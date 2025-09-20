@@ -113,17 +113,18 @@ body {
 
 .nav {
     display: flex;
-    /* border: 1px black solid; */
+    position: fixed;
+    width: 100%;
     background-color: black;
     align-items: center;
-    padding: 5px 20px;
+    padding: 5px 10px;
+    z-index: 99999999;
 }
 
 .nav a {
     text-decoration: none;
     color: white;
     margin: 0 10px;
-    /* border: 1px white solid; */
 }
 
 .logo {
@@ -149,9 +150,7 @@ body {
 
 .my-container {
     margin: 0 20px;
-    /* padding: 0 10px; */
-    /* border: 1px white solid; */
-
+    padding-top: 70px;
 }
 
 /* .footer {
@@ -176,6 +175,34 @@ body {
 .kanan a {
     text-decoration: none;
     color: white;
+}
+
+@media (max-width:768px) {
+    .kanan {
+        display: none;
+    }
+}
+
+@media (max-width:576px) {
+    .kanan {
+        display: none;
+    }
+}
+
+.kotak-hitam {
+    background-color: black;
+    position: absolute;
+    width: 100%;
+    height: 20px;
+    bottom: 0;
+    pointer-events: none;
+    border-radius: 10px;
+}
+
+@media (max-width: 576px) {
+    .home-left .kotak-hitam {
+        display: none;
+    }
 }
 
 .home-grid {
@@ -203,12 +230,11 @@ body {
 }
 
 .home-left, .home-middle, .home-right {
-    /* border: 1px white solid; */
     margin: 0;
-    /* padding: 0 20px; */
     background-color: black;
     border-radius: 10px;
     color: white;
+    position: relative;
 }
 
 .home-title-card {
@@ -216,17 +242,25 @@ body {
 }
 
 .home-left {
-    height: auto;
+    max-height: 400px;
+    grid-area: left;
 }
 
 .home-left ul {
     list-style: none;
     margin: 0;
     padding: 0 10px;
+    overflow: hidden;
+    overflow-y: scroll;
+    scrollbar-width: none;
+    -ms-overflow-style: none;  
 }
 
 @media (max-width: 576px) {
     .home-left ul {
+        margin-top: -10px;
+        margin-bottom: 10px;
+        display: flex;
         overflow: hidden;
         overflow-x: scroll;
         scrollbar-width: none;
@@ -235,7 +269,8 @@ body {
 }
 
 .home-tag {
-    display: inline-block;
+    display: block;
+    width: fit-content;
     padding: 8px 14px;
 }
 
@@ -257,18 +292,23 @@ body {
 
 
 .home-middle {
-    padding: 0;
+    padding: 0 20px 10px 20px;
     max-height: 400px;
     overflow: hidden;
     overflow-y: scroll;
     scrollbar-width: none;
     -ms-overflow-style: none;
+    grid-area: middle;
+}
+
+.home-middle .home-title-card {
+    padding: 0;
 }
 
 .home-middle ul {
     list-style: none;
     margin-top: 0;
-    padding: 0 20px;
+    padding: 0;
     display: grid;
     grid-template-columns: repeat(auto-fit, 150px);
     justify-content: center;
@@ -285,7 +325,7 @@ body {
         display: grid;
         padding: 0 20px;
         grid-auto-flow: column;
-        grid-auto-columns: 80%;
+        grid-auto-columns: 150px;
         justify-content: start;
         overflow: hidden;
         overflow-x: scroll;
@@ -297,13 +337,14 @@ body {
         min-width: 150px;
         max-width: 150px;
     }
+
 }
 
 @media (max-width: 576px) {
     .home-middle ul {
         display: grid;
         grid-auto-flow: column;
-        grid-auto-columns: 80%;
+        grid-auto-columns: 150px;
         justify-content: start;
         overflow: hidden;
         overflow-x: scroll;
@@ -320,22 +361,124 @@ body {
     border-radius: 10px;
     background-color: rgb(10, 10, 10);
     margin-bottom: 10px;
-    padding: 5px;
-    /* border: 1px white solid; */
+    transition: filter 0.3 ease;
+    position: relative;
+}
+
+.home-middle .game-item:hover {
+    filter: brightness(50%);
 }
 
 .home-middle .game-card {
     height: 200px;
     padding: 5px;
-    /* border: 1px white solid; */
-    
 }
 
 .home-middle .game-card img {
     width: 100%;
     height: 100%;
+    object-fit: cover;
     display: block;
 }
+
+.home-middle .game-info {
+    padding: 0 5px;
+    position: absolute;
+    text-align: center;
+    align-content: center;
+    min-height: 40px;
+    max-height: 40px;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.8);
+    width: 100%;
+}
+
+.home-middle .game-info span {
+    font-size: 14px;
+    font-weight: bold;
+    padding: 0;
+    margin: 0;
+    color: white;
+}
+
+
+.home-right {
+    padding: 0 0 10px 0 ;
+    max-height: 400px;
+    overflow: hidden;
+    overflow-y: scroll;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+@media (max-width: 768px) {
+    .home-right {
+        grid-area: right;
+        grid-column: 1 / -1;
+    }
+}
+
+.home-right ul {
+    list-style: none;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.home-right ul li {
+    margin-bottom: 20px;
+    width: 100%;
+    display: block;
+}
+
+.home-right ul li a {
+    display: flex;
+    gap: 10px;
+    text-decoration: none;
+}
+
+.home-right .top-game-item {
+    background-color: rgb(10,10,10);
+    padding: 5px;
+}
+
+.home-right .top-game-item:hover {
+    filter: brightness(50%);
+}
+
+.home-right .top-game-card {
+    position: relative;
+    width: 112.5px;
+    height: 150px;
+    overflow: hidden;
+}
+
+.home-right .top-game-card img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+}
+
+.home-right .rank-number {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.8);
+    text-decoration: none;
+    font-weight: bold;
+    padding: 2px 6px;
+    border-radius: 5px;
+    font-size: 0.9em;
+}
+
+.home-right .top-game-info {
+    color: white;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+
 
 
 

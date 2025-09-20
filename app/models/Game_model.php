@@ -20,6 +20,12 @@ class Game_model {
         return $this->db->single();
     }
 
+    // Ambil Game dari rating tertinggi
+    public function getTopGame() {
+        $this->db->query('SELECT * FROM ' . $this->table . ' WHERE rating >= 9.0 ORDER BY rating DESC LIMIT 5');
+        return $this->db->resultSet();
+    }
+
     // Cari game berdasarkan keyword
     public function searchGame($keyword) {
         if($keyword === '') {
