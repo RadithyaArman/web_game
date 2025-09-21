@@ -12,9 +12,14 @@
         <ul>
             <?php
             foreach( $data['genres'] as $g ) : ?>
-            <li class="home-tag">
-                <a href=""><?= $g['name']; ?></a>
-            </li>
+            <a href="<?= BASEURL; ?>/home/genre/<?= $g['id'] ?>">
+                <div class="home-tag">
+                    <li>
+                        <p><?= $g['name']; ?></p>
+                    </li>
+                </div>                
+            </a>
+            
             <?php endforeach; ?>
         </ul>
         <div class="kotak-hitam"></div>
@@ -34,7 +39,7 @@
                                 <img src="<?= $g['cover'] ?>">
                             </div>
                             <div class="game-info">
-                                    <span><?= $g['title'] ?></span>
+                                    <span class="title"><?= $g['title'] ?></span>
                             </div>
                             
                         </div>
@@ -58,8 +63,19 @@
                                 <span class="rank-number"><?= $no; ?>.</span>
                             </div>
                             <div class="top-game-info">
-                                <span><?= $t['title'] ?></span>
+                                <div class="title">
+                                    <p>title</p>
+                                </div>
+                                <div class="info">
+                                    <p>Rate</p>
+                                    <p>Developer</p>
+                                    <p>Publisher</p>
+                                </div>
+                                <div class="genre">
+                                    <p>genre</p>
+                                </div>
                             </div>
+                        </div>
                     </a>
                 </li>
             <?php $no++; ?>

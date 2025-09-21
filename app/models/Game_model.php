@@ -26,6 +26,13 @@ class Game_model {
         return $this->db->resultSet();
     }
 
+    // Ambil Game dari Genre
+    public function getGamesByGenre($idgenre) {
+        $this->db->query('SELECT g.* FROM ' . $this->table . ' g JOIN game_genre gg ON g.id = gg.id_game WHERE gg.id_genre = :id_genre');
+        $this->db->bind('id_genre', $idgenre);
+        return $this->db->resultSet();
+    }
+
     // Cari game berdasarkan keyword
     public function searchGame($keyword) {
         if($keyword === '') {
