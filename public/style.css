@@ -189,22 +189,6 @@ body {
     }
 }
 
-.kotak-hitam {
-    background-color: black;
-    position: absolute;
-    width: 100%;
-    height: 20px;
-    bottom: 0;
-    pointer-events: none;
-    border-radius: 10px;
-}
-
-@media (max-width: 576px) {
-    .home-left .kotak-hitam {
-        display: none;
-    }
-}
-
 .home-grid {
     display: grid;
     grid-template-columns: minmax(150px, 1fr) 4fr minmax(150px, 2fr);
@@ -230,12 +214,34 @@ body {
 }
 
 .home-title-card {
-    padding: 0 20px;
+    top: 0;
+    z-index: 200;
+    position: sticky;
+    background-color: black;
+    width: 100%;
+    padding: 5px 0;
 }
 
-.title {
-    font-family: Arial, Helvetica, sans-serif;
+.kotak-hitam {
+    background-color: black;
+    position: sticky;
+    z-index: 201;
+    width: 100%;
+    height: 10px;
+    bottom: -10px;
+    pointer-events: none;
 }
+
+@media (max-width: 576px) {
+    .home-left .kotak-hitam {
+        display: none;
+    }
+    
+    .home-middle .kotak-hitam {
+        display: none;
+    }
+}
+
 
 .home-left, .home-middle, .home-right {
     margin: 0;
@@ -244,21 +250,32 @@ body {
     color: white;
     position: relative;
     max-height: 400px;
+    overflow: hidden;
+}
+
+@media (max-width: 576px) {
+    .home-left, .home-middle, .home-right {
+        border-radius: 0;
+    }
 }
 
 .home-left {
     grid-area: left;
-
-}
-
-.home-left ul {
-    list-style: none;
-    margin: 0;
-    padding: 0 10px;
+    padding: 0 20px;
     overflow: hidden;
     overflow-y: scroll;
     scrollbar-width: none;
     -ms-overflow-style: none;  
+}
+
+.home-left ul {
+    list-style: none;
+    margin: -10px 0 0 -10px;
+    padding: 0;
+}
+
+.home-left ul li p{
+    white-space: nowrap;
 }
 
 @media (max-width: 576px) {
@@ -310,13 +327,9 @@ body {
     min-height: 300px;
 }
 
-.home-middle .home-title-card {
-    padding: 0;
-}
-
 .home-middle ul {
     list-style: none;
-    margin-top: 0;
+    margin-top: -10px;
     padding: 0;
     display: grid;
     grid-template-columns: repeat(auto-fit, 150px);
@@ -412,7 +425,7 @@ body {
 
 
 .home-right {
-    padding: 0 0 10px 0 ;
+    padding: 0 20px 10px 20px ;
     overflow: hidden;
     overflow-y: scroll;
     scrollbar-width: none;
@@ -428,8 +441,8 @@ body {
 
 .home-right ul {
     list-style: none;
-    padding-left: 20px;
-    padding-right: 20px;
+    padding: 0;
+    margin-top: -10px;
 }
 
 .home-right ul li {
@@ -450,7 +463,8 @@ body {
     overflow: hidden;
     display: flex;
     gap: 10px;
-    border: 1px white solid;
+    /* border: 1px white solid; */
+    max-height: 165px;
 }
 
 .home-right .top-game-item:hover {
@@ -485,7 +499,78 @@ body {
     font-size: 0.9em;
 }
 
+.top-game-info {
+    /* border: 1px white solid; */
+    width: 100%;
+    /* min-height: 100%; */
+    display: flex;
+    overflow: hidden;
+    flex-direction: column;
+}
 
+.top-game-info .title p {
+    margin: 0;
+}
+
+.top-game-info .title {
+    margin-bottom: 2px;
+}
+
+.top-game-info .title p {
+    font-size: 16px;
+    font-weight: bold;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 2; 
+}
+
+.top-game-info .info {
+    margin-top: 5px;
+    margin-bottom: 10px;
+    /* border: 1px white solid; */
+    width: 100%;
+    height: 100%;
+}
+
+.top-game-info .info p {
+    margin: 5px 0;
+    font-size: 12px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.top-game-info .info .rating {
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.top-game-info .genre {
+    /* border: 1px white solid; */
+    height: 100%;
+    width: 100%;
+    align-content: end;
+}
+
+.top-game-info .genre ul {
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 3px;
+    overflow: hidden;
+    
+}
+.top-game-info .genre ul li{
+    border-radius: 10px;
+    background-color: black;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 4px 8px;
+    margin: 0;
+    width: fit-content;
+}
 
 
 

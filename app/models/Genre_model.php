@@ -8,7 +8,7 @@ class Genre_model {
     }
 
     public function getAllGenre() {
-        $this->db->query('SELECT * FROM ' . $this->table);
+        $this->db->query('SELECT * FROM ' . $this->table . ' ORDER BY name ASC');
         return $this->db->resultSet();
     }
 
@@ -16,6 +16,12 @@ class Genre_model {
         $this->db->query('SELECT g.* FROM ' . $this->table . ' g JOIN game_genre gg ON g.id = gg.id_genre WHERE gg.id_game = :id_game');
         $this->db->bind('id_game', $idgame);
         return $this->db->resultSet();
+    }
+
+    public function getGenreById($idgenre) {
+        $this->db->query('SELECT * FROM ' . $this->table . ' WHERE id = :id');
+        $this->db->bind('id', $idgenre);
+        return $this->db->single();
     }
 
 }

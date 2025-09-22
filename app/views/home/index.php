@@ -10,23 +10,23 @@
     <div class="home-left">
         <h3 class="home-title-card">Tag</h3>
         <ul>
-            <?php
-            foreach( $data['genres'] as $g ) : ?>
-            <a href="<?= BASEURL; ?>/home/genre/<?= $g['id'] ?>">
-                <div class="home-tag">
-                    <li>
+            <?php foreach( $data['genres'] as $g ) : ?>
+            <li>
+                <a href="<?= BASEURL; ?>/home/genre/<?= $g['id'] ?>">
+                    <div class="home-tag">
                         <p><?= $g['name']; ?></p>
-                    </li>
-                </div>                
-            </a>
-            
+                    </div>
+                </a>
+            </li>
             <?php endforeach; ?>
         </ul>
         <div class="kotak-hitam"></div>
     </div>
     <div class="home-middle">
-        <h3 class="home-title-card">Multiple Game Lists</h3>
+
+        <h3 class="home-title-card"><?= $data['titleMiddle']; ?></h3>
         <ul>
+            <?php if( !empty($data['games']) ) : ?>
             <?php
                 $count = 0;
                 foreach( $data['games'] as $g ) :
@@ -47,6 +47,9 @@
                 </li>
             <?php $count++;
              endforeach; ?>
+             <?php else : ?>
+                <li>Game tidak tersedia.</li>
+            <?php endif; ?>
         </ul>
         <div class="kotak-hitam"></div>
     </div>
@@ -64,15 +67,19 @@
                             </div>
                             <div class="top-game-info">
                                 <div class="title">
-                                    <p>title</p>
+                                    <p class="game-title"><?= $t['title'] ?></p>
                                 </div>
                                 <div class="info">
-                                    <p>Rate</p>
-                                    <p>Developer</p>
-                                    <p>Publisher</p>
+                                    <p class="rating"><?= $t['rating'] ?>/10⭐</p>
+                                    <p>Developer: <?= $t['developer'] ?></p>
+                                    <p>Publisher: <?= $t['publisher'] ?></p>
                                 </div>
                                 <div class="genre">
-                                    <p>genre</p>
+                                    <ul>
+                                        <?php foreach($t['genre'] as $genre): ?>
+                                            <li><?= $genre['name']; ?></li>
+                                        <?php endforeach; ?>
+                                    </ul>
                                 </div>
                             </div>
                         </div>
