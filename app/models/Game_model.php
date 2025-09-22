@@ -22,7 +22,7 @@ class Game_model {
 
     // Ambil Game dari rating tertinggi
     public function getTopGame() {
-        $this->db->query('SELECT * FROM ' . $this->table . ' WHERE rating >= 5.0 ORDER BY rating DESC LIMIT 5');
+        $this->db->query('SELECT * FROM ' . $this->table . ' WHERE rating >= 7.0 ORDER BY rating DESC LIMIT 5');
         return $this->db->resultSet();
     }
 

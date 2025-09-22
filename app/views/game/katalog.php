@@ -1,10 +1,9 @@
-<div class="atas">
-    <select name="" id="sort" class="sort">
+<div class="katalog-top">
+    <select name="" id="sort" class="katalog-sort">
         <option value="asc">A-Z</option>
         <option value="desc">Z-A</option>
     </select>
-
-    <form method="post" class="search">
+    <form method="post" class="katalog-search">
         <input type="text" id="keyword" name="keyword" autocomplete="off" placeholder="Cari game...">
     </form>
 </div>

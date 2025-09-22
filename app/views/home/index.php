@@ -1,8 +1,8 @@
-<div class="atas">
-    <div class="kiri">
-        <h2 class="">Beranda</h2>
+<div class="home-top">
+    <div class="home">
+        <h2 class=""><a href="<?= BASEURL; ?>">Beranda</a></h2>
     </div>
-    <div class="kanan">
+    <div class="to-katalog">
         <a href="<?= BASEURL; ?>/katalog">>Temukan semua game</a>
     </div>
 </div>

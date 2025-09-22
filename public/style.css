@@ -109,6 +109,9 @@ body {
     background-color: rgb(10, 10, 10);
     color: white;
     height: 100%;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    min-height: 100vh;
 }
 
 .nav {
@@ -148,43 +151,48 @@ body {
     margin-left: auto;
 }
 
+.footer {
+    background-color: black;
+    margin-top: 50px;
+    text-align: center;
+    height: auto;
+    padding: 1rem;
+}
+
 .my-container {
     margin: 0 20px;
     padding-top: 70px;
 }
 
-/* .footer {
-    flex: 1;
-    margin-top: 30px;
-    background-color: black;
-    width: auto;
-    height: auto;
-} */
-
 
 
 /* ------------------------home--------------------------------- */
 
-.atas {
+.home-top {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 0;
 }
 
-.kanan a {
+.home a {
+    text-decoration: none;
+    color: white;
+}
+
+.to-katalog a {
     text-decoration: none;
     color: white;
 }
 
 @media (max-width:768px) {
-    .kanan {
+    .to-katalog {
         display: none;
     }
 }
 
 @media (max-width:576px) {
-    .kanan {
+    .to-katalog {
         display: none;
     }
 }
@@ -222,6 +230,8 @@ body {
     padding: 5px 0;
 }
 
+
+
 .kotak-hitam {
     background-color: black;
     position: sticky;
@@ -229,6 +239,8 @@ body {
     width: 100%;
     height: 10px;
     bottom: -10px;
+    margin-top: 20px;
+    margin-bottom: 20px;
     pointer-events: none;
 }
 
@@ -253,6 +265,17 @@ body {
     overflow: hidden;
 }
 
+@media (max-width: 768px) {
+    .home-left, .home-middle {
+        max-height: 300px;
+        
+    }
+
+    .home-middle .kotak-hitam {
+        display: none;
+    }
+}
+
 @media (max-width: 576px) {
     .home-left, .home-middle, .home-right {
         border-radius: 0;
@@ -266,6 +289,14 @@ body {
     overflow-y: scroll;
     scrollbar-width: none;
     -ms-overflow-style: none;  
+}
+
+.home-left .home-title-card {
+    /* border: 1px white solid; */
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-left: -20px;
+    margin-right: -20px;
 }
 
 .home-left ul {
@@ -565,7 +596,7 @@ body {
 .top-game-info .genre ul li{
     border-radius: 10px;
     background-color: black;
-    font-size: 12px;
+    font-size: 10px;
     font-weight: bold;
     padding: 4px 8px;
     margin: 0;
@@ -579,55 +610,34 @@ body {
 
 /* ----------------------katalog--------------------------------------------------------------------------------------- */
 
-.katalog {
-    margin: 0 20px;
-    /* border: 1px white solid; */
+.katalog-top {
+    border: 1px white solid;
+    display: flex;
 }
 
-
-.search {
+.katalog-search {
     margin-left: auto;
 }
 
-
+.katalog {
+    /* margin: 0 20px; */
+    border: 1px white solid;
+    overflow: hidden;
+}
 .katalog ul{
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    gap: 20px;
     list-style: none;
+    margin-top: -10px;
     padding: 0;
-    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 112.5px);
+    justify-content: center;
+    gap: 15px;
 }
 
 .katalog li {
-    /* border: 1px white solid; */
+    border: 1px white solid;
+    max-width: 112.5px;
     padding: 10px;
-    height: 250px;
-}
-
-
-
-.katalog-game-item {
-    /* border: 1px white solid; */
-    background-color: black;
-    border-radius: 10px;
-    padding-bottom: 10px;
-}
-
-.katalog-game-card {
-    height: 220px;
-    padding: 5px;
-
-}
-.katalog-game-card img {
-    object-fit: cover;
-    width: 100%;
-    height: 100%;
-    border-radius: 10px 10px 0 0;
-}
-
-.katalog-game-info {
-    padding: 5px;
 }
 
 
