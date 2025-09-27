@@ -39,38 +39,12 @@
                                 <img src="<?= $g['cover'] ?>">
                             </div>
                             <div class="game-info">
-                                    <span class="title"><?= $g['title'] ?></span>
-                            </div>
-                            
+                                <span class="title"><?= $g['title'] ?></span>
+                            </div>       
                         </div>
                     </a>
                 </li>
-                <li>
-                    <a href=" <?= BASEURL; ?>/detail/<?= $g['id'] ?> ">
-                        <div class="game-item">
-                            <div class="game-card">
-                                <img src="<?= $g['cover'] ?>">
-                            </div>
-                            <div class="game-info">
-                                    <span class="title"><?= $g['title'] ?></span>
-                            </div>
-                            
-                        </div>
-                    </a>
-                </li>
-                <li>
-                    <a href=" <?= BASEURL; ?>/detail/<?= $g['id'] ?> ">
-                        <div class="game-item">
-                            <div class="game-card">
-                                <img src="<?= $g['cover'] ?>">
-                            </div>
-                            <div class="game-info">
-                                    <span class="title"><?= $g['title'] ?></span>
-                            </div>
-                            
-                        </div>
-                    </a>
-                </li>
+                
             <?php $count++;
              endforeach; ?>
              <?php else : ?>

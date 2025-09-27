@@ -1,8 +1,11 @@
 <div class="katalog-top">
-    <select name="" id="sort" class="katalog-sort">
-        <option value="asc">A-Z</option>
-        <option value="desc">Z-A</option>
-    </select>
+    <div class="katalog-title">
+        <h2>Katalog Game</h2>
+        <select name="" id="sort" class="katalog-sort">
+            <option value="asc">A-Z</option>
+            <option value="desc">Z-A</option>
+        </select>
+    </div>
     <form method="post" class="katalog-search">
         <input type="text" id="keyword" name="keyword" autocomplete="off" placeholder="Cari game...">
     </form>
