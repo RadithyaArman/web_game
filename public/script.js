@@ -33,4 +33,23 @@ document.addEventListener("DOMContentLoaded", function() {
             fetchGames(BASEURL + "/game/sort", formData);
         });
     }
+
+
+
+    const track = document.querySelector('.detail-carousel-track');
+    const items = document.querySelectorAll('.detail-carousel-item');
+    const prevBtn = document.querySelector('.prev');
+    const nextBtn = document.querySelector('.next');
+
+    let index = 0;
+
+    function showSlide(i) {
+        index = (i + items.length) % items.length;
+        track.style.transform = `translateX(${-index * 100}%)`;
+    }
+
+    prevBtn.addEventListener('click', () => showSlide(index - 1));
+    nextBtn.addEventListener('click', () => showSlide(index + 1));
+
+    setInterval(() => showSlide(index + 1), 3000);
 });

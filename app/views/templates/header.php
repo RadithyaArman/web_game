@@ -8,10 +8,12 @@
     <link rel="stylesheet" href="<?= BASEURL; ?>/style.css">
 </head>
 <body>
-    <div class="nav">
+    <div class="header">
         <h2 class="logo"><a href="<?= BASEURL; ?>">SUBJEK</a></h2>
-        <h3><a href="<?= BASEURL; ?>/katalog">Katalog</a></h3>
-        <p class="login"><a href="">Login</a></p>
+        <div class="nav">
+            <h3><a href="<?= BASEURL; ?>/katalog">Katalog</a></h3>
+            <p class="login"><a href="">Login</a></p>
+        </div>
     </div>
 
     <div class="my-container">
