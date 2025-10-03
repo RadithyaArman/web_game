@@ -52,4 +52,17 @@ document.addEventListener("DOMContentLoaded", function() {
     nextBtn.addEventListener('click', () => showSlide(index + 1));
 
     setInterval(() => showSlide(index + 1), 3000);
+
+
+    const image = document.querySelector('.detail-image');
+    const info = document.querySelector('.detail-info');
+
+    if (image && info) {
+        const resizeObserver = new ResizeObserver(() => {
+            info.style.maxHeight = image.offsetHeight + "px";
+        });
+        resizeObserver.observe(image);
+    }
+
+
 });
