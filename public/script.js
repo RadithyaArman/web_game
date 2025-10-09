@@ -45,13 +45,17 @@ document.addEventListener("DOMContentLoaded", function() {
 
     function showSlide(i) {
         index = (i + items.length) % items.length;
-        track.style.transform = `translateX(${-index * 100}%)`;
+        if(track) {
+            track.style.transform = `translateX(${-index * 100}%)`;
+        }
     }
 
-    prevBtn.addEventListener('click', () => showSlide(index - 1));
-    nextBtn.addEventListener('click', () => showSlide(index + 1));
+    if (prevBtn && nextBtn) {
+        prevBtn.addEventListener('click', () => showSlide(index - 1));
+        nextBtn.addEventListener('click', () => showSlide(index + 1));
 
-    setInterval(() => showSlide(index + 1), 3000);
+        setInterval(() => showSlide(index + 1), 3000);
+    }
 
 
     const image = document.querySelector('.detail-image');
@@ -64,5 +68,18 @@ document.addEventListener("DOMContentLoaded", function() {
         resizeObserver.observe(image);
     }
 
+ 
+    const userBtn = document.getElementById('user-btn');
+    const userDropdown = document.getElementById('user-dropdown');
+    const hamburgerBtn = document.getElementById('hamburger-btn');
+    const hamburgerMenu = document.getElementById('hamburger-menu');
+
+    userBtn?.addEventListener('click', () => {
+        userDropdown.classList.toggle('show');
+    });
+
+    hamburgerBtn?.addEventListener('click', () => {
+        hamburgerMenu.classList.toggle('menu-open');
+    });
 
 });

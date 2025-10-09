@@ -28,10 +28,10 @@
         <ul>
             <?php if( !empty($data['games']) ) : ?>
             <?php
-                $count = 0;
-                foreach( $data['games'] as $g ) :
-                if( $count >= 12 ) break;
-                ?>
+            $count = 0;
+            foreach( $data['games'] as $g ) :
+            if( $count >= 12 ) break;
+            ?>
                 <li>
                     <a href=" <?= BASEURL; ?>/detail/<?= $g['id'] ?> ">
                         <div class="game-item">
@@ -44,7 +44,6 @@
                         </div>
                     </a>
                 </li>
-                
             <?php $count++;
              endforeach; ?>
              <?php else : ?>

@@ -39,7 +39,7 @@ class Game_model {
             $this->db->query("SELECT * FROM {$this->table}");
         } else {
             $this->db->query('SELECT * FROM ' . $this->table . ' WHERE title LIKE :keyword');
-            $this->db->bind(':keyword', "%$keyword%");
+            $this->db->bind('keyword', "%$keyword%");
         }
         return $this->db->resultSet();
     }
@@ -50,4 +50,89 @@ class Game_model {
         $this->db->query("SELECT * FROM  {$this->table} ORDER BY title $order");
         return $this->db->resultSet();
     }
+
+    // Tambah
+    public function addGame($data, $files) {
+        $query = "INSERT INTO {$this->table} (`title`, `deskripsi`, `rating`, `release`, `developer`, `publisher`) VALUES (:title, :deskripsi, :rating, :release, :developer, :publisher)";
+        $this->db->query($query);
+        $this->db->bind('title', $data['title']);
+        $this->db->bind('deskripsi', $data['deskripsi']);
+        $this->db->bind('rating', $data['rating']);
+        $this->db->bind('release', $data['release']);
+        $this->db->bind('developer', $data['developer']);
+        $this->db->bind('publisher', $data['publisher']);
+        $this->db->execute();
+
+        $game_id = $this->db->lastInsertId();
+
+        if(!empty($data['cover'])) {
+            $this->db->query("INSERT INTO images (id_game, file_path, cover_game) VALUES (:id_game, :file_path, 1)");
+            $this->db->bind('id_game', $game_id);
+            $this->db->bind('file_path', $data['cover']);
+            $this->db->execute();
+        }
+
+        if(isset($data['genres'])) {
+            foreach($data['genres'] as $id_genre) {
+                $this->db->query("INSERT INTO game_genre (id_game, id_genre) VALUES (:game, :genre)");
+                $this->db->bind('game', $game_id);
+                $this->db->bind('genre', $id_genre);
+                $this->db->execute();
+            }
+        }
+        return true;
+    }
+
+    // Edit
+    public function updateGame($data) {
+        $query = "UPDATE games SET `title` = :title, `deskripsi` = :deskripsi, `rating` = :rating, `release` = :release, `developer` = :developer, `publisher` = :publisher WHERE id = :id";
+        $this->db->query($query);
+        $this->db->bind('id', $data['id']);
+        $this->db->bind('title', $data['title']);
+        $this->db->bind('deskripsi', $data['deskripsi']);
+        $this->db->bind('rating', $data['rating']);
+        $this->db->bind('release', $data['release']);
+        $this->db->bind('developer', $data['developer']);
+        $this->db->bind('publisher', $data['publisher']);
+        $this->db->execute();
+
+        if (!empty($data['cover'])) {
+            $this->db->query("UPDATE images SET file_path = :file_path WHERE id_game = :id_game AND cover_game = 1");
+            $this->db->bind('file_path', $data['cover']);
+            $this->db->bind('id_game', $data['id']);
+            $this->db->execute();
+        }
+
+        $this->db->query("DELETE FROM game_genre WHERE id_game = :id");
+        $this->db->bind('id', $data['id']);
+        $this->db->execute();
+
+        if (isset($data['genres'])) {
+            foreach ($data['genres'] as $id_genre) {
+                $this->db->query("INSERT INTO game_genre (id_game, id_genre) VALUES (:game, :genre)");
+                $this->db->bind('game', $data['id']);
+                $this->db->bind('genre', $id_genre);
+                $this->db->execute();
+            }
+        }
+        return true;
+    }
+
+    // Delete
+    public function deleteGame($id) {
+        $this->db->query("DELETE FROM images WHERE id_game = :id");
+        $this->db->bind('id', $id);
+        $this->db->execute();
+
+        $this->db->query("DELETE FROM game_genre WHERE id_game = :id");
+        $this->db->bind('id', $id);
+        $this->db->execute();
+
+        $this->db->query("DELETE FROM games WHERE id = :id");
+        $this->db->bind('id', $id);
+        return $this->db->execute();
+    }
+
+
+
 }

@@ -22,6 +22,7 @@
             <p>Rate: <?= $data['games']['rating'] ?>/10⭐</p>
             <p>Developer: <?= $data['games']['developer'] ?></p>
             <p>Publisher: <?= $data['games']['publisher'] ?></p>
+            <p>Release: <?= $data['games']['release'] ?></p>
             <div class="detail-genre-game">
                 <ul>
                     <?php foreach($data['genres'] as $g) : ?>
