@@ -1,30 +1,49 @@
-<h2>Tambah Game</h2>
-<form action="" method="post" enctype="multipart/form-data">
-    <label>Title:</label><br>
-    <input type="text" name="title" required><br><br>
+<div class="tambah-bagian-atas">
+    <h2>Tambah Game</h2>
+    <p><a href="<?= BASEURL; ?>/admin">> Kembali</a></p>
+</div>
 
-    <label>Deskripsi:</label><br>
-    <textarea name="deskripsi" required></textarea><br><br>
+<div class="tambah-game">
+    <form action="" method="post" enctype="multipart/form-data" autocomplete="off">
+        <div class="tambah-info">
+            <label>Title:</label><br>
+            <input type="text" name="title" required><br><br>
 
-    <label>Rating:</label><br>
-    <input type="text" name="rating"><br><br>
+            <label>Deskripsi:</label><br>
+            <textarea name="deskripsi" required></textarea><br><br>
 
-    <label>Release:</label><br>
-    <input type="date" name="release"><br><br>
+            <label>Rating:</label><br>
+            <input type="text" name="rating"><br><br>
 
-    <label>Developer:</label><br>
-    <input type="text" name="developer"><br><br>
+            <label>Release:</label><br>
+            <input type="date" name="release"><br><br>
 
-    <label>Publisher:</label><br>
-    <input type="text" name="publisher"><br><br>
+            <label>Developer:</label><br>
+            <input type="text" name="developer"><br><br>
 
-    <label>Genre:</label><br>
-    <?php foreach ($data['genres'] as $genre): ?>
-        <input type="checkbox" name="genres[]" value="<?= $genre['id'] ?>"> <?= $genre['name'] ?><br>
-    <?php endforeach; ?><br>
+            <label>Publisher:</label><br>
+            <input type="text" name="publisher"><br><br>
+        </div>
+        
+        <div class="tambah-genre-game">
+            <label>Genre:</label><br>
+            <div class="checkbox-genre">
+                <?php foreach ($data['genres'] as $genre): ?>
+                    <input type="checkbox" name="genres[]" value="<?= $genre['id'] ?>"> <?= $genre['name'] ?><br>
+                <?php endforeach; ?><br>
+            </div>
+        </div>
 
-    <label>Cover Image:</label><br>
-    <input type="url" name="cover" required><br><br>
+        <div class="simpan-game">
+            <label>Cover Image:</label><br>
+            <input type="url" name="cover" placeholder="https://example.com/cover.jpg"><br><br>
+            <button type="submit">Simpan</button>
+        </div>
 
-    <button type="submit">Simpan</button>
-</form>
+
+        
+
+
+    </form>
+</div>
+

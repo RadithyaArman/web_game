@@ -32,7 +32,7 @@ class Admin extends Controller {
         $data['games'] = $games;
 
         $this->view('templates/header', $data);
-        $this->view('admin/index', $data);
+        $this->view('admin/admin', $data);
         $this->view('templates/footer');
     }
 
@@ -48,7 +48,8 @@ class Admin extends Controller {
                 $data['error'] = 'Gagal menambah game';
             }
         }
-    
+
+        $data['judul'] = 'Tambah Game';
         $data['genres'] = $genres;
 
         $this->view('templates/header', $data);
@@ -60,7 +61,7 @@ class Admin extends Controller {
     public function edit($id) {
         $games= $this->gameModel->getGameById($id);
         $genres = $this->genreModel->getAllGenre();    
-        $select_genres = $this->genreModel->getGenreById($id);   
+        $select_genres = $this->genreModel->getGenreByGame($id);   
         
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             if ($this->gameModel->updateGame($_POST, $_FILES)) {
@@ -71,6 +72,7 @@ class Admin extends Controller {
             }
         }
 
+        $data['judul'] = 'Edit Game';
         $data['games'] = $games;
         $data['genres'] = $genres;
         $data['select_genre'] = $select_genres;

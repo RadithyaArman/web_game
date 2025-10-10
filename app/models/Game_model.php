@@ -17,7 +17,15 @@ class Game_model {
     public function getGameById($id) {
         $this->db->query('SELECT * FROM ' . $this->table . ' WHERE id=:id');
         $this->db->bind('id', $id);
-        return $this->db->single();
+        $game = $this->db->single();
+
+        $this->db->query('SELECT file_path FROM images WHERE id_game = :id_game AND cover_game = 1');
+        $this->db->bind('id_game', $id);
+        $cover = $this->db->single();
+
+        $game['cover'] = $cover ? $cover['file_path'] : '';
+
+        return $game;
     }
 
     // Ambil Game dari rating tertinggi

@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Halaman <?= $data['judul']; ?></title>
+    <link rel="stylesheet" href="<?= BASEURL; ?>/css/bootstrap.css">
     <link rel="stylesheet" href="<?= BASEURL; ?>/style.css">
 </head>
 <body>
@@ -21,7 +22,7 @@
             <?php if(isset($_SESSION['username'])): ?>
             <button class="user-btn" id="user-btn"><?= $_SESSION['username']; ?></button>
             <div class='user-dropdown' id="user-dropdown">
-                <a href="<?= BASEURL; ?>/auth/logout">Logout</a>
+                <a href="<?= BASEURL; ?>/auth/logout"  onclick="return confirm('Mau Keluar?')">Logout</a>
             </div>
             <?php else: ?>
             <a href="<?= BASEURL; ?>/auth" class="link-login">Login</a>
@@ -35,7 +36,7 @@
                     <a href="<?= BASEURL; ?>/admin">Admin Panel</a>
                 <?php endif; ?>
                 <?php if(isset($_SESSION['username'])) : ?>
-                    <a href="<?= BASEURL ?>/auth/logout">Logout</a>
+                    <a href="<?= BASEURL ?>/auth/logout" onclick="return confirm('Mau Keluar?')">Logout</a>
                 <?php else: ?>
                     <a href="<?= BASEURL; ?>/auth">Login</a>
                 <?php endif; ?>
